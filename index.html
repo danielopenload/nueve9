@@ -3,30 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reproductor Smart TV</title>
-  <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+  <title>Canal9 - Smart TV</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
+      height: 100%;
+      width: 100%;
       background: black;
-      height: 100%;
-      width: 100%;
     }
-    video {
+    iframe {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      border: none;
     }
   </style>
 </head>
 <body>
-  <video id="videoPlayer" autoplay muted></video>
-  <script>
-    const url = "https://edge-mix01-neh.cvattv.com.ar/tok_eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOiIxNzU1NzUwNTM0Iiwic2lwIjoiMTgxLjk3LjEyMS4yMDkiLCJwYXRoIjoiL2xpdmUvYzNlZHMvQ2FuYWw5L1NBX0xpdmVfZGFzaF9lbmMvIiwic2Vzc2lvbl9jZG5faWQiOiI3YWNkYzA4ZjRkY2M2OTZmIiwic2Vzc2lvbl9pZCI6IiIsImNsaWVudF9pZCI6IiIsImRldmljZV9pZCI6IiIsIm1heF9zZXNzaW9ucyI6MCwic2Vzc2lvbl9kdXJhdGlvbiI6MCwidXJsIjoiaHR0cHM6Ly8yMDEuMjM1LjY2LjEyMiIsImF1ZCI6IjI2MiIsInNvdXJjZXMiOlsxMDQsODUsMTQ0LDg2LDg4XX0=.-GanoT_tpM-eTMDGfg-WVCg4U2Z98dNHNLCygfca8wBpzgslfLU6Im9H-o0-JyBoUnnftYy3LidEgtipeRfceg==/live/c3eds/Canal9/SA_Live_dash_enc/Canal9.mpd";
-
-    const player = dashjs.MediaPlayer().create();
-    player.initialize(document.querySelector("#videoPlayer"), url, true);
-  </script>
+  <iframe src="https://bestleague.one/cvatt.html?get=Q2FuYWw5" allowfullscreen></iframe>
 </body>
 </html>
