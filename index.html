@@ -36,6 +36,15 @@
       cursor: pointer;
     }
   </style>
+  <script>
+    // Evita usar la versión en caché y recarga completamente
+    window.onload = function() {
+      if (!window.location.search.includes("nocache")) {
+        const separator = window.location.href.includes("?") ? "&" : "?";
+        window.location.href = window.location.href + separator + "nocache=" + new Date().getTime();
+      }
+    }
+  </script>
 </head>
 <body>
   <h1>Selecciona un canal</h1>
@@ -46,7 +55,3 @@
   <!-- Agrega más enlaces aquí -->
 </body>
 </html>
-
-https://bestleague.one/cvatt.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE
-
-
