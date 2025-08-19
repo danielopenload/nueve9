@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reproductor Smart TV</title>
+<script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+<style>
+  body {
+    margin: 0;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  video {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    background: black;
+  }
+</style>
+</head>
+<body>
+<video id="videoPlayer" controls autoplay></video>
+<script>
+  // URL del MPD del canal público
+  var url = "https://bestleague.one/cvatt.html?get=Q2FuYWw5&lang=1";
+
+  // Crear el reproductor DASH
+  var player = dashjs.MediaPlayer().create();
+  player.initialize(document.querySelector("#videoPlayer"), url, true);
+</script>
+</body>
+</html>
