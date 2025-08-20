@@ -1,51 +1,64 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canales Smart TV</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: black;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-    h1 {
-      margin-bottom: 20px;
-    }
-    .canal {
-      background: #222;
-      padding: 15px 30px;
-      margin: 10px;
-      border-radius: 10px;
-      text-decoration: none;
-      color: white;
-      font-size: 20px;
-      width: 200px;
-      text-align: center;
-      transition: 0.2s;
-    }
-    .canal:hover {
-      background: red;
-      cursor: pointer;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Browser - Canales</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: black;
+    display: flex;
+    flex-direction: column;
+  }
+  #menu {
+    background: #111;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+  }
+  .canal {
+    background: #222;
+    color: white;
+    margin: 5px;
+    padding: 15px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  .canal:hover, .canal:focus {
+    background: red;
+    outline: none;
+  }
+  #viewer {
+    flex: 1;
+    border: none;
+    width: 100%;
+  }
+</style>
 </head>
 <body>
 
-  <a class="canal" href="https://bestleague.one/cvatt.html?get=Q2FuYWw5&start=true">CANAL 9</a>
-  <a class="canal" href="https://tvlibreonline.org/html/fl/?get=VHlDU3BvcnQ&start=true">TYC</a>
-  <a class="canal" href="https://bestleague.one/cvatt.html?get=RVNQTjJIRA&start=true">ESPN</a>
-  <a class="canal" href="https://tvlibreonline.org/html/fl/?get=SGlzdG9yeV8y&start=true">H2</a>
-  <a class="canal" href="https://bestleague.one/cvatt.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE&start=true">ESPN PREMIUN</a>
-  <!-- Agrega más enlaces aquí -->
+<div id="menu">
+  <div class="canal" onclick="openChannel('https://bestleague.one/cvatt.html?get=Q2FuYWw5&autoplay=true')">CANAL 9</div>
+  <div class="canal" onclick="openChannel('https://tvlibreonline.org/html/fl/?get=VHlDU3BvcnQ')">TYC</div>
+  <div class="canal" onclick="openChannel('https://bestleague.one/cvatt.html?get=RVNQTjJIRA')">ESPN</div>
+  <div class="canal" onclick="openChannel('https://tvlibreonline.org/html/fl/?get=SGlzdG9yeV8y')">H2</div>
+  <div class="canal" onclick="openChannel('https://bestleague.one/cvatt.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE')">ESPN PREMIUM</div>
+</div>
+
+<iframe id="viewer" src=""></iframe>
+
+<script>
+  function openChannel(url) {
+    document.getElementById('viewer').src = url;
+  }
+</script>
+
 </body>
 </html>
-
-
