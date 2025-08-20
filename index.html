@@ -33,12 +33,10 @@ h1 {
   width: 300px;
   text-align: center;
   display: block;
-  outline: none;
   transition: 0.2s;
 }
-.canal.focused {
+.canal:hover {
   background: red;
-  color: white;
   transform: scale(1.05);
   box-shadow: 0 0 15px red;
 }
@@ -48,41 +46,11 @@ h1 {
 
 <h1>Selecciona un canal</h1>
 
-<div class="canal" data-url="https://bestleague.one/cvatt.html?get=Q2FuYWw5">CANAL 9</div>
-<div class="canal" data-url="https://tvlibreonline.org/html/fl/?get=VHlDU3BvcnQ">TYC</div>
-<div class="canal" data-url="https://bestleague.one/cvatt.html?get=RVNQTjJIRA">ESPN</div>
-<div class="canal" data-url="https://tvlibreonline.org/html/fl/?get=SGlzdG9yeV8y">H2</div>
-<div class="canal" data-url="https://bestleague.one/cvatt.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE">ESPN PREMIUM</div>
-
-<script>
-const canales = Array.from(document.querySelectorAll('.canal'));
-let index = 0;
-
-function updateFocus() {
-  canales.forEach((c, i) => {
-    c.classList.toggle('focused', i === index);
-  });
-}
-
-// Enfocar el primer canal al cargar
-window.onload = updateFocus;
-
-// Navegación con flechas y abrir canal
-document.addEventListener('keydown', function(e) {
-  if(e.key === "ArrowDown") {
-    index = (index + 1) % canales.length;
-    updateFocus();
-  }
-  if(e.key === "ArrowUp") {
-    index = (index - 1 + canales.length) % canales.length;
-    updateFocus();
-  }
-  if(e.key === "Enter") {
-    // Abrir canal en la misma ventana
-    window.location.href = canales[index].dataset.url;
-  }
-});
-</script>
+<a class="canal" href="https://bestleague.one/cvatt.html?get=Q2FuYWw5">CANAL 9</a>
+<a class="canal" href="https://tvlibreonline.org/html/fl/?get=VHlDU3BvcnQ">TYC</a>
+<a class="canal" href="https://bestleague.one/cvatt.html?get=RVNQTjJIRA">ESPN</a>
+<a class="canal" href="https://tvlibreonline.org/html/fl/?get=SGlzdG9yeV8y">H2</a>
+<a class="canal" href="https://bestleague.one/cvatt.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE">ESPN PREMIUM</a>
 
 </body>
 </html>
