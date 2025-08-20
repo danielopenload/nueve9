@@ -8,27 +8,29 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: black;
+  background: #111;
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   min-height: 100vh;
-  padding-top: 20px;
+  padding-top: 30px;
 }
 h1 {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  font-size: 28px;
+  text-shadow: 1px 1px 4px black;
 }
 .canal {
   background: #222;
-  padding: 20px 35px;
-  margin: 10px;
-  border-radius: 10px;
+  padding: 20px 40px;
+  margin: 12px;
+  border-radius: 12px;
   text-decoration: none;
   color: white;
   font-size: 22px;
-  width: 280px;
+  width: 300px;
   text-align: center;
   display: block;
   outline: none;
@@ -36,6 +38,9 @@ h1 {
 }
 .canal.focused {
   background: red;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px red;
 }
 </style>
 </head>
@@ -43,7 +48,7 @@ h1 {
 
 <h1>Selecciona un canal</h1>
 
-<div class="canal" data-url="https://bestleague.one/cvatt.html?get=Q2FuYWw5&autoplay=true">CANAL 9</div>
+<div class="canal" data-url="https://bestleague.one/cvatt.html?get=Q2FuYWw5">CANAL 9</div>
 <div class="canal" data-url="https://tvlibreonline.org/html/fl/?get=VHlDU3BvcnQ">TYC</div>
 <div class="canal" data-url="https://bestleague.one/cvatt.html?get=RVNQTjJIRA">ESPN</div>
 <div class="canal" data-url="https://tvlibreonline.org/html/fl/?get=SGlzdG9yeV8y">H2</div>
@@ -59,9 +64,10 @@ function updateFocus() {
   });
 }
 
+// Enfocar el primer canal al cargar
 window.onload = updateFocus;
 
-// Navegación con flechas y abrir canal en iframe intermedio
+// Navegación con flechas y abrir canal
 document.addEventListener('keydown', function(e) {
   if(e.key === "ArrowDown") {
     index = (index + 1) % canales.length;
@@ -72,8 +78,8 @@ document.addEventListener('keydown', function(e) {
     updateFocus();
   }
   if(e.key === "Enter") {
-    const url = encodeURIComponent(canales[index].dataset.url);
-    window.location.href = `canal.html?url=${url}`;
+    // Abrir canal en la misma ventana
+    window.location.href = canales[index].dataset.url;
   }
 });
 </script>
