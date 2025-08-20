@@ -1,49 +1,83 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canales Smart TV</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: black;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-    h1 {
-      margin-bottom: 20px;
-    }
-    .canal {
-      background: #222;
-      padding: 15px 30px;
-      margin: 10px;
-      border-radius: 10px;
-      text-decoration: none;
-      color: white;
-      font-size: 20px;
-      width: 200px;
-      text-align: center;
-      transition: 0.2s;
-    }
-    .canal:hover {
-      background: red;
-      cursor: pointer;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Browser Smart TV</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding-top: 20px;
+}
+h1 {
+  margin-bottom: 20px;
+}
+.canal {
+  background: #222;
+  padding: 20px 35px;
+  margin: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  font-size: 22px;
+  width: 280px;
+  text-align: center;
+  display: block;
+  outline: none;
+  transition: 0.2s;
+}
+.canal.focused {
+  background: red;
+}
+</style>
 </head>
 <body>
 
-  <a class="canal" href="https://bestleague.one/cvatt.html?get=Q2FuYWw5&start=true">CANAL 9</a>
-  <a class="canal" href="https://tvlibreonline.org/html/fl/?get=VHlDU3BvcnQ&start=true">TYC</a>
-  <a class="canal" href="https://bestleague.one/cvatt.html?get=RVNQTjJIRA&start=true">ESPN</a>
-  <a class="canal" href="https://tvlibreonline.org/html/fl/?get=SGlzdG9yeV8y&start=true">H2</a>
-  <a class="canal" href="https://bestleague.one/cvatt.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE&start=true">ESPN PREMIUN</a>
-  <!-- Agrega más enlaces aquí -->
+<h1>Selecciona un canal</h1>
+
+<div class="canal" data-url="https://bestleague.one/cvatt.html?get=Q2FuYWw5">CANAL 9</div>
+<div class="canal" data-url="https://tvlibreonline.org/html/fl/?get=VHlDU3BvcnQ">TYC</div>
+<div class="canal" data-url="https://bestleague.one/cvatt.html?get=RVNQTjJIRA">ESPN</div>
+<div class="canal" data-url="https://tvlibreonline.org/html/fl/?get=SGlzdG9yeV8y">H2</div>
+<div class="canal" data-url="https://bestleague.one/cvatt.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE">ESPN PREMIUM</div>
+
+<script>
+const canales = Array.from(document.querySelectorAll('.canal'));
+let index = 0;
+
+// Función para actualizar el enfoque visual
+function updateFocus() {
+  canales.forEach((c, i) => {
+    c.classList.toggle('focused', i === index);
+  });
+}
+
+// Al cargar, enfocamos el primer canal
+window.onload = updateFocus;
+
+// Manejo de teclas del control remoto
+document.addEventListener('keydown', function(e) {
+  if(e.key === "ArrowDown") {
+    index = (index + 1) % canales.length;
+    updateFocus();
+  }
+  if(e.key === "ArrowUp") {
+    index = (index - 1 + canales.length) % canales.length;
+    updateFocus();
+  }
+  if(e.key === "Enter") {
+    window.location.href = canales[index].dataset.url;
+  }
+});
+</script>
+
 </body>
 </html>
