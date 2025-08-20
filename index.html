@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mini Browser Smart TV</title>
+<title>Canales Smart TV</title>
 <style>
 body {
   margin: 0;
@@ -43,7 +43,7 @@ h1 {
 
 <h1>Selecciona un canal</h1>
 
-<div class="canal" data-url="https://bestleague.one/cvatt.html?get=Q2FuYWw5">CANAL 9</div>
+<div class="canal" data-url="https://bestleague.one/cvatt.html?get=Q2FuYWw5&autoplay=true">CANAL 9</div>
 <div class="canal" data-url="https://tvlibreonline.org/html/fl/?get=VHlDU3BvcnQ">TYC</div>
 <div class="canal" data-url="https://bestleague.one/cvatt.html?get=RVNQTjJIRA">ESPN</div>
 <div class="canal" data-url="https://tvlibreonline.org/html/fl/?get=SGlzdG9yeV8y">H2</div>
@@ -53,17 +53,15 @@ h1 {
 const canales = Array.from(document.querySelectorAll('.canal'));
 let index = 0;
 
-// Función para actualizar el enfoque visual
 function updateFocus() {
   canales.forEach((c, i) => {
     c.classList.toggle('focused', i === index);
   });
 }
 
-// Al cargar, enfocamos el primer canal
 window.onload = updateFocus;
 
-// Manejo de teclas del control remoto
+// Navegación con flechas y abrir canal en iframe intermedio
 document.addEventListener('keydown', function(e) {
   if(e.key === "ArrowDown") {
     index = (index + 1) % canales.length;
@@ -74,7 +72,8 @@ document.addEventListener('keydown', function(e) {
     updateFocus();
   }
   if(e.key === "Enter") {
-    window.location.href = canales[index].dataset.url;
+    const url = encodeURIComponent(canales[index].dataset.url);
+    window.location.href = `canal.html?url=${url}`;
   }
 });
 </script>
