@@ -2,34 +2,62 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Menú de Canales</title>
+  <title>Menú de Canales TV</title>
   <style>
     body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
       background: black;
       color: white;
       font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
     }
     a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: black;
       color: cyan;
-      font-size: 2em;
-      margin: 1em;
+      font-size: 1em;
       text-decoration: none;
+      border: 2px solid cyan;
+      border-radius: 8px;
+      height: 80px;
+      text-align: center;
+      padding: 5px;
     }
     a:hover {
-      color: lightblue;
+      background: cyan;
+      color: black;
     }
   </style>
 </head>
 <body>
-  <h1>Elige un canal</h1>
-  <a href="canal/artear.html">Artear HD</a>
-  <a href="canal/telefe.html">Telefe HD</a>
-  <a href="canal/canal9.html">Canal 9</a>
+  <h1>CANALES TV</h1>
+  <div class="grid">
+    <!-- Canales -->
+    <a href="https://tvlibre.cc/html/fl/?get=QXJ0ZWFySEQ">CANAL 13</a>
+    <a href="https://mg.bestleague.world/cvatt.html?get=VGVsZWZlSEQ=">TELEFE</a>
+    <a href="https://tvlibre.cc/html/fl/?get=Q2FuYWw5">CANAL 9</a>
+    <a href="https://mg.bestleague.world/cvatt.html?get=Q2FuYWw3">TV PUBLICA</a>
+    <a href="https://mg.bestleague.world/cvatt.html?get=QW1lcmljYVRW">AMERICA TV</a>
+
+    <a href="https://mg.bestleague.world/cvatt.html?get=Q3JvbmljYVRW">CRONICA TV</a>
+    <a href="https://tvlibre.cc/html/fl/?get=QzVO">C5N</a>
+    <a href="https://tvlibre.cc/html/fl/?get=VG9kb05vdGljaWFz">TN</a>
+    <a href="https://tvlibre.cc/html/fl/?get=QW1lcmljYTI0">A24</a>
+    <a href="https://tvlibre.cc/html/fl/?get=MjZfVFZfSEQ">CANAL 26</a>
+    
+
+    <!-- Continuar hasta los 100 canales -->
+  </div>
 </body>
 </html>
-
