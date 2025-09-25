@@ -10,11 +10,11 @@
   <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
 </head>
 <body>
-  <video id="videoPlayer" autoplay muted playsinline></video>
+  <video id="videoPlayer" controls autoplay></video>
+
   <script>
     const url = "https://cdn.cvattv.com.ar/live/c3eds/ArtearHD/SA_Live_dash_enc/ArtearHD.mpd";
     const video = document.getElementById("videoPlayer");
-    video.muted = true;
     const player = dashjs.MediaPlayer().create();
     player.initialize(video, url, true);
   </script>
