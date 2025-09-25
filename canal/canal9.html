@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Canal 9</title>
+  <style>
+    body { margin:0; background:black; }
+    video { width:100vw; height:100vh; background:black; }
+  </style>
+  <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+</head>
+<body>
+  <video id="videoPlayer" autoplay muted playsinline></video>
+  <script>
+    const url = "https://cdn.cvattv.com.ar/live/c3eds/Canal9/SA_Live_dash_enc/Canal9.mpd";
+    const video = document.getElementById("videoPlayer");
+    video.muted = true;
+    const player = dashjs.MediaPlayer().create();
+    player.initialize(video, url, true);
+  </script>
+</body>
+</html>
