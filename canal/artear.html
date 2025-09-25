@@ -2,21 +2,48 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Artear HD</title>
+  <title>Prueba de soporte MSE</title>
   <style>
-    body { margin:0; background:black; }
-    video { width:100vw; height:100vh; background:black; }
+    body {
+      background: black;
+      color: white;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .ok { color: lime; }
+    .fail { color: red; }
   </style>
-  <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
 </head>
 <body>
-  <video id="videoPlayer" controls autoplay></video>
+  <h1>Prueba de soporte del navegador</h1>
+  <div id="result"></div>
 
   <script>
-    const url = "https://cdn.cvattv.com.ar/live/c3eds/ArtearHD/SA_Live_dash_enc/ArtearHD.mpd";
-    const video = document.getElementById("videoPlayer");
-    const player = dashjs.MediaPlayer().create();
-    player.initialize(video, url, true);
+    function soporteMSE() {
+      return !!window.MediaSource;
+    }
+
+    function soporteCodec(codec) {
+      const v = document.createElement("video");
+      return v.canPlayType(codec);
+    }
+
+    const result = document.getElementById("result");
+
+    const mse = soporteMSE();
+    const dash = soporteCodec('application/dash+xml; codecs="avc1.4d401e, mp4a.40.2"');
+    const hls = soporteCodec('application/vnd.apple.mpegurl; codecs="avc1.42E01E, mp4a.40.2"');
+
+    result.innerHTML = `
+      <p>MSE: <strong class="${mse ? 'ok':'fail'}">${mse ? 'Soportado' : 'No soportado'}</strong></p>
+      <p>DASH (.mpd): <strong class="${dash ? 'ok':'fail'}">${dash ? 'Soportado' : 'No soportado'}</strong></p>
+      <p>HLS (.m3u8): <strong class="${hls ? 'ok':'fail'}">${hls ? 'Soportado' : 'No soportado'}</strong></p>
+    `;
   </script>
 </body>
 </html>
